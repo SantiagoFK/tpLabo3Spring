@@ -1,0 +1,59 @@
+[ {
+  "id" : 1,
+  "diaCheckIn" : [ 2023, 6, 8 ],
+  "diaCheckOut" : [ 2023, 6, 22 ],
+  "cliente" : {
+    "id" : 0,
+    "usuario" : {
+      "username" : null,
+      "password" : null,
+      "tipoUsuario" : null
+    },
+    "nombre" : null,
+    "apellido" : null,
+    "dni" : null,
+    "domicilio" : null,
+    "telefono" : null,
+    "saldo" : 0.0,
+    "estaActivo" : true
+  },
+  "habitacion" : {
+    "id" : 0,
+    "esReservable" : false,
+    "precioDiario" : null,
+    "capacidadMax" : 0,
+    "tipoHabitacion" : "MonoAmbiente",
+    "serviciosHabitacion" : null
+  },
+  "montoPagar" : 15000.0,
+  "estaActiva" : false
+}, {
+  "id" : 1,
+  "diaCheckIn" : [ 2023, 6, 8 ],
+  "diaCheckOut" : [ 2023, 6, 29 ],
+  "cliente" : {
+    "id" : 0,
+    "usuario" : {
+      "username" : null,
+      "password" : null,
+      "tipoUsuario" : null
+    },
+    "nombre" : null,
+    "apellido" : null,
+    "dni" : null,
+    "domicilio" : null,
+    "telefono" : null,
+    "saldo" : 0.0,
+    "estaActivo" : true
+  },
+  "habitacion" : {
+    "id" : 0,
+    "esReservable" : false,
+    "precioDiario" : null,
+    "capacidadMax" : 0,
+    "tipoHabitacion" : "MonoAmbiente",
+    "serviciosHabitacion" : null
+  },
+  "montoPagar" : 30000.0,
+  "estaActiva" : false
+} ]

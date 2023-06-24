@@ -1,5 +1,6 @@
 package sistemaHotelUtn.gestionReservas;
 
+import sistemaHotelUtn.generales.Persona;
 import sistemaHotelUtn.gestionClientes.Cliente;
 import sistemaHotelUtn.gestionHabitaciones.Habitacion;
 
@@ -11,12 +12,13 @@ import java.time.LocalDate;
 public class Reserva implements Serializable {
     //region Atributos
     private int id;
-    public static int ultimoId;
+    public static int ultimoId = 0;
+    private boolean idEstaAsignado = false;
     private boolean estaPago;
     private LocalDate diaCheckIn;
     private LocalDate diaCheckOut;
-    private Cliente cliente;
-    private Habitacion habitacion;
+    private Cliente cliente = null;
+    private Habitacion habitacion = null;
     private double saldo;
     private double montoPagar;
     private boolean estaActiva;
@@ -33,8 +35,6 @@ public class Reserva implements Serializable {
         this.cliente = cliente;
         this.habitacion = habitacion;
         this.estaActiva = true;
-        this.id=ultimoId++;
-
     }
 
     //region Getters y Setters
@@ -42,11 +42,13 @@ public class Reserva implements Serializable {
         return id;
     }
 
-
-
-
-    public void setId(int id) {
-        this.id = id;
+    public void asignarIdAutoincremental()
+    {
+        if( ! idEstaAsignado )
+        {
+            this.id = ++Reserva.ultimoId;
+            this.idEstaAsignado = true;
+        }
     }
 
     public LocalDate getDiaCheckIn() {
@@ -99,10 +101,6 @@ public class Reserva implements Serializable {
         this.montoPagar = montoPagar;
     }
 
-    public static void setUltimoId(int ultimoId) {
-        Reserva.ultimoId = ultimoId;
-    }
-
     @Override
     public String toString() {
         return "{" +
@@ -114,6 +112,4 @@ public class Reserva implements Serializable {
                 "||\tCheck Out: " + diaCheckOut +
                 "||" + "}\n";
     }
-
-
 }

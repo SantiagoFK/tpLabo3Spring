@@ -15,8 +15,7 @@ import java.util.Scanner;
 
 public class GestionReservas extends Gestion<Reserva> {
     public GestionReservas() {
-        cargarReservasJson();
-        Reserva.setUltimoId(this.getLista().size());
+
     }
 
     public boolean isDisponiblePorFecha(int idHabitacion, LocalDate checkIn, LocalDate checkOut) {
@@ -187,7 +186,6 @@ public class GestionReservas extends Gestion<Reserva> {
 
         if (isDisponiblePorFecha(habitacion.getId(), checkIn, checkOut)) {
             Reserva nuevaReserva = new Reserva();
-            nuevaReserva.setId(Reserva.ultimoId++);
             nuevaReserva.setHabitacion(habitacion);
             nuevaReserva.setDiaCheckIn(checkIn);
             nuevaReserva.setDiaCheckOut(checkOut);

@@ -31,12 +31,6 @@ public class ControladorGeneral
         return "index";
     }
 
-    @GetMapping("/clientes")
-    public String clientes()
-    {
-        return "clientes";
-    }
-
     @GetMapping("/eventos")
     public String eventos(Model model)
     {
@@ -49,50 +43,93 @@ public class ControladorGeneral
     public String agregarEvento(Evento evento)
     {
         evento.asignarIdAutoincremental();
-        this.gestionEventos.agregar(evento);
-        this.gestionEventos.guardarEventosJson();
+        gestionEventos.agregar(evento);
+        gestionEventos.guardarEventosJson();
         return "redirect:/";
+    }
+
+    @GetMapping("/clientes")
+    public String clientes(Model model)
+    {
+        gestionClientes.cargarClientesJson();
+        model.addAttribute("clientes", gestionClientes.getLista());
+        return "clientes";
     }
 
     @PostMapping("/agregarCliente")
     public String agregarCliente(Cliente cliente)
     {
+        cliente.asignarIdAutoincremental();
+        gestionClientes.agregar(cliente);
+        gestionClientes.guardarClientesJson();
         return "clientes";
     }
 
-/*    @PostMapping("/agregarEmpleado")
+    @GetMapping("/empleados")
+    public String empleados(Model model)
+    {
+        gestionEmpleados.cargarEmpleadosJson();
+        model.addAttribute( "empleados", gestionEmpleados.getLista());
+        return "empleados";
+    }
+
+    @PostMapping("/agregarEmpleado")
     public String agregarEmpleado(Empleado empleado)
     {
-        ;
+        empleado.asignarIdAutoincremental();
+        gestionEmpleados.agregar(empleado);
+        gestionEmpleados.guardarEmpleadosJson();
+        return "empleados";
+    }
+
+    @GetMapping("/reservas")
+    public String reservas(Model model)
+    {
+        gestionClientes.cargarClientesJson();
+        gestionReservas.cargarReservasJson();
+        gestionHabitaciones.cargarHabitacionesJson();
+        model.addAttribute("reservas", gestionReservas.getLista());
+        model.addAttribute("clientes", gestionClientes.getLista());
+        model.addAttribute("habitaciones", gestionHabitaciones.getLista());
+        return "reservas";
+    }
+
+    @PostMapping("/agregarReserva")
+    public String agregarReserva(Reserva reserva, Cliente cliente, Habitacion habitacion)
+    {
+        reserva.asignarIdAutoincremental();
+        //reserva.setCliente(cliente);
+        //reserva.setHabitacion(habitacion);
+        gestionReservas.agregar(reserva);
+        gestionReservas.guardarReservasJson();
+        return "reservas";
     }
 
     @PostMapping("/agregarReserva")
     public String agregarReserva(Reserva reserva)
     {
-        ;
-    }
-
-    @PostMapping("/agregarHabitacion")
-    public String agregarHabitacion(Habitacion reserva)
-    {
-        ;
-    }*/
-
-    @GetMapping("/reservas")
-    public String reservas()
-    {
+        reserva.asignarIdAutoincremental();
+        //reserva.setCliente(cliente);
+        //reserva.setHabitacion(habitacion);
+        gestionReservas.agregar(reserva);
+        gestionReservas.guardarReservasJson();
         return "reservas";
     }
 
-    @GetMapping("/empleados")
-    public String empleados()
+    @GetMapping("/habitaciones")
+    public String habitaciones(Model model)
     {
-        return "empleados";
+        gestionHabitaciones.cargarHabitacionesJson();
+        model.addAttribute("habitaciones", gestionHabitaciones.getLista());
+        return "habitaciones";
     }
 
-    @GetMapping("/habitaciones")
-    public String habitaciones()
+    @PostMapping("/agregarHabitacion")
+    public String agregarHabitacion(Habitacion habitacion)
     {
+        habitacion.asignarIdAutoincremental();
+        gestionHabitaciones.agregar(habitacion);
+        gestionHabitaciones.guardarHabitacionJson();
         return "habitaciones";
     }
 }

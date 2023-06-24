@@ -5,6 +5,84 @@
     <head th:replace="plantillaBase :: head "></head>
     <body>
         <header th:replace="plantillaBase :: header"></header>
+
+        <h1 class="display-3 text-center">Clientes</h1>
+
+        <div class="my-3 mx-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#agregarCliente">Agregar</button>
+
+            <div class="modal fade" id="agregarCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{/agregarCliente}" method="post" th:object="${cliente}">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id = "nombre" name ="nombre" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="apellido">Apellido:</label>
+                                    <input type="text" id = "apellido" name ="apellido" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dni">Dni:</label>
+                                    <input type="text" id = "dni" name ="dni" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tel">Teléfono:</label>
+                                    <input type="tel" id = "tel" name ="tel" class = "form-control" required>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${ clientes != null and ! clientes.empty }">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Dni</th>
+                        <th scope="col">Teléfono</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="cliente: ${clientes}">
+                        <th scope="row">[[${cliente.getId()}]]</th>
+                        <td>[[${cliente.getNombre()}]]</td>
+                        <td>[[${cliente.getApellido()}]]</td>
+                        <td>[[${cliente.getDni()}]]</td>
+                        <td>[[${cliente.getTelefono()}]]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if = "${clientes  == null or clientes.empty}"
+             class="text-center p-2">
+            <span>Lista de clientes vacía</span>
+        </div>
+
         <footer th:replace="plantillaBase :: footer"></footer>
     </body>
 </html>

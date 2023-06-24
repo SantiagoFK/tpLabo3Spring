@@ -1,5 +1,7 @@
 package sistemaHotelUtn.gestionHabitaciones;
 
+import sistemaHotelUtn.gestionReservas.Reserva;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -7,10 +9,12 @@ public class Habitacion implements Serializable {
 
     //region Atributos
     private int id;
-    private static int ultimoId;
+    private static int ultimoId = 0;
+    private boolean idEstaAsignado = false;
     private boolean esReservable;
     private Double precioDiario;
     private int capacidadMax;
+    private TipoHabitacion tipoHabitacion = TipoHabitacion.MonoAmbiente;
     private ArrayList<ServiciosHabitacion> serviciosHabitacion;
 
     //endregion
@@ -23,16 +27,34 @@ public class Habitacion implements Serializable {
                       ArrayList<ServiciosHabitacion> serviciosHabitacion) {
 
         this.esReservable = esReservable;
-        this.id=ultimoId++;
         this.precioDiario = precioDiario;
         this.capacidadMax = capacidadMax;
         this.serviciosHabitacion = serviciosHabitacion;
+    }
+
+    public Habitacion(boolean esReservable, Double precioDiario, int capacidadMax,
+                      ArrayList<ServiciosHabitacion> serviciosHabitacion, TipoHabitacion tipoHabitacion) {
+
+        this.esReservable = esReservable;
+        this.precioDiario = precioDiario;
+        this.capacidadMax = capacidadMax;
+        this.serviciosHabitacion = serviciosHabitacion;
+        this.tipoHabitacion = tipoHabitacion;
     }
     //endregion
 
     //region Getters y Setters
     public int getId() {
         return id;
+    }
+
+    public void asignarIdAutoincremental()
+    {
+        if( ! idEstaAsignado )
+        {
+            this.id = ++Habitacion.ultimoId;
+            this.idEstaAsignado = true;
+        }
     }
 
     public boolean getEsReservable() {
@@ -71,6 +93,14 @@ public class Habitacion implements Serializable {
         this.serviciosHabitacion = serviciosHabitacion;
     }
     //endregion
+
+    public TipoHabitacion getTipoHabitacion() {
+        return tipoHabitacion;
+    }
+
+    public void setTipoHabitacion(TipoHabitacion tipoHabitacion) {
+        this.tipoHabitacion = tipoHabitacion;
+    }
 
     @Override
     public String toString() {

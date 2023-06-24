@@ -5,6 +5,104 @@
     <head th:replace="plantillaBase :: head "></head>
     <body>
         <header th:replace="plantillaBase :: header"></header>
+
+        <h1 class="display-3 text-center">Reservas</h1>
+
+        <div class="my-3 mx-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#agregarReserva">Agregar</button>
+
+            <div class="modal fade" id="agregarReserva" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{/agregarReserva}" method="post" th:object="${reserva}">
+
+                                <!--hacer que elija el cliente de una lista desplegable-->
+                                <div class="form-group">
+                                    <label for="cliente">Cliente:</label>
+                                    <select id = "cliente" class="form-select" aria-label="Clientes">
+                                        <option selected>Clientes</option>
+                                        <option th:each="cliente: ${clientes}" value="${cliente}">
+                                            [[${cliente.getApellido()}]], [[${cliente.getNombre()}]]
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <!-- hacer que elija la habitacion de una lista desplegable-->
+                                <div class="form-group">
+                                    <label for="habitacion">Habitación:</label>
+                                    <select id = "habitacion" class="form-select" aria-label="Habitaciones">
+                                        <option selected>Habitaciones</option>
+                                        <option th:each="habitacion: ${habitaciones}" value="${habitacion}">
+                                            [[${habitacion.getId()}]], [[${habitacion.getTipoHabitacion()}]], [[${habitacion.getPrecioDiario()}]]
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="diaCheckIn">Check In:</label>
+                                    <input type="date" id = "diaCheckIn" name ="diaCheckIn" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="diaCheckOut">Check Out:</label>
+                                    <input type="date" id = "diaCheckOut" name ="diaCheckOut" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="montoPagar">Monto:</label>
+                                    <input type="number" id = "montoPagar" name ="montoPagar" class = "form-control" required>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${ reservas != null and ! reservas.empty }">
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Habitación</th>
+                    <th scope="col">Check In</th>
+                    <th scope="col">Check Out</th>
+                    <th scope="col">Monto</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="reserva: ${reservas}">
+                    <th scope="row">[[${reserva.getId()}]]</th>
+                    <td>[[${reserva.getCliente.getApellido()}]], [[${reserva.getCliente.getNombre()}]]</td>
+                    <td>[[${reserva.getHabitacion().getId()}]], [[${reserva.getHabitacion().getTipoHabitacion}]]</td>
+                    <td>[[${reserva.getDiaCheckIn()}]]</td>
+                    <td>[[${reserva.getDiaCheckOut()}]]</td>
+                    <td>[[${reserva.getMontoPagar()}]]</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if = "${reservas == null or reservas.empty}"
+             class="text-center p-2">
+            <span>Lista de reservas vacía</span>
+        </div>
+
         <footer th:replace="plantillaBase :: footer"></footer>
     </body>
 </html>

@@ -5,6 +5,98 @@
     <head th:replace="plantillaBase :: head "></head>
     <body>
         <header th:replace="plantillaBase :: header"></header>
+
+        <h1 class="display-3 text-center">Empleados</h1>
+
+        <div class="my-3 mx-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#agregarEmpleado">Agregar</button>
+
+            <div class="modal fade" id="agregarEmpleado" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{/agregarEmpleado}" method="post" th:object="${empleado}">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id = "nombre" name ="nombre" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="apellido">Apellido:</label>
+                                    <input type="text" id = "apellido" name ="apellido" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="dni">Dni:</label>
+                                    <input type="text" id = "dni" name ="dni" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tel">Teléfono:</label>
+                                    <input type="tel" id = "tel" name ="tel" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="puesto">Puesto:</label>
+                                    <input type="text" id = "puesto" name ="tel" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="salario">Salario:</label>
+                                    <input type="number" id = "salario" name ="tel" class = "form-control" required>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${ empleados != null and ! empleados.empty }">
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Dni</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Puesto</th>
+                    <th scope="col">Salario</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="empleado: ${empleados}">
+                    <th scope="row">[[${empleado.getId()}]]</th>
+                    <td>[[${empleado.getNombre()}]]</td>
+                    <td>[[${empleado.getApellido()}]]</td>
+                    <td>[[${empleado.getDni()}]]</td>
+                    <td>[[${empleado.getTelefono()}]]</td>
+                    <td>[[${empleado.getPuesto()}]]</td>
+                    <td>[[${empleado.getSalario()}]]</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if = "${empleados  == null or empleados.empty}"
+             class="text-center p-2">
+            <span>Lista de empleados vacía</span>
+        </div>
+
         <footer th:replace="plantillaBase :: footer"></footer>
     </body>
 </html>
