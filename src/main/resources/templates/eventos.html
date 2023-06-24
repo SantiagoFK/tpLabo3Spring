@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+    <html lang="en"
+          xlmns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="plantillaBase :: head ">
+    </head>
+
+    <body>
+        <header th:replace="plantillaBase :: header"></header>
+
+        <h1 class="display-3 text-center">Eventos</h1>
+
+        <div class="my-3 mx-3">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#agregarEvento">Agregar</button>
+
+            <div class="modal fade" id="agregarEvento" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{/agregarEvento}" method="post" th:object="${evento}">
+                                <div class="form-group">
+                                    <label for="nombreEvento">Nombre Evento:</label>
+                                    <input type="text" id = "nombreEvento" name ="nombreEvento" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="organizador">Organizador:</label>
+                                    <input type="text" id = "organizador" name ="organizador" class = "form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="participantes">Participantes:</label>
+                                    <input type="text" id = "participantes" name ="participantes" class = "form-control" required>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${ eventos != null and !eventos.empty }">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Evento</th>
+                        <th scope="col">Organizador</th>
+                        <th scope="col">Participantes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="evento: ${eventos}">
+                        <th scope="row">[[${evento.getId()}]]</th>
+                        <td>[[${evento.getNombreEvento()}]]</td>
+                        <td>[[${evento.getOrganizador()}]]</td>
+                        <td>[[${evento.getParticipantes()}]]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if = "${eventos  == null or eventos.empty}"
+             class="text-center p-2">
+            <span>lista eventos vacia</span>
+        </div>
+
+        <footer th:replace="plantillaBase :: footer"></footer>
+    </body>
+</html>

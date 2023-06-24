@@ -1,0 +1,8 @@
+[ {
+  "id" : 1,
+  "nombreEvento" : "Mardel Valley",
+  "organizador" : "UTN Mdp",
+  "participantes" : 50,
+  "fechaHoraInicio" : [ 2023, 6, 24, 14, 31, 43, 188551600 ],
+  "fechaHoraFin" : [ 2023, 6, 24, 16, 31, 43, 188551600 ]
+} ]
