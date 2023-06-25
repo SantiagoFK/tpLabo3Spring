@@ -6,7 +6,7 @@ import sistemaHotelUtn.generales.TipoUsuario;
 public class Empleado extends Persona {
 
     //region Atributos
-    private double salario = 200000.00;
+    private double salario;
     private int antiguedad;
     private String puesto = "Empleado";
     //endregion

@@ -1,5 +1,6 @@
 package sistemaHotelUtn.gestionReservas;
 
+import lombok.Data;
 import sistemaHotelUtn.generales.Persona;
 import sistemaHotelUtn.gestionClientes.Cliente;
 import sistemaHotelUtn.gestionHabitaciones.Habitacion;
@@ -7,7 +8,6 @@ import sistemaHotelUtn.gestionHabitaciones.Habitacion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-
 
 public class Reserva implements Serializable {
     //region Atributos

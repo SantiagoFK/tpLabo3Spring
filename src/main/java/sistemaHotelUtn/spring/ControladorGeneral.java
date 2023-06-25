@@ -45,7 +45,7 @@ public class ControladorGeneral
         evento.asignarIdAutoincremental();
         gestionEventos.agregar(evento);
         gestionEventos.guardarEventosJson();
-        return "redirect:/";
+        return "redirect:/eventos";
     }
 
     @GetMapping("/clientes")
@@ -62,7 +62,7 @@ public class ControladorGeneral
         cliente.asignarIdAutoincremental();
         gestionClientes.agregar(cliente);
         gestionClientes.guardarClientesJson();
-        return "clientes";
+        return "redirect:/clientes";
     }
 
     @GetMapping("/empleados")
@@ -79,7 +79,7 @@ public class ControladorGeneral
         empleado.asignarIdAutoincremental();
         gestionEmpleados.agregar(empleado);
         gestionEmpleados.guardarEmpleadosJson();
-        return "empleados";
+        return "redirect:/empleados";
     }
 
     @GetMapping("/reservas")
@@ -95,25 +95,12 @@ public class ControladorGeneral
     }
 
     @PostMapping("/agregarReserva")
-    public String agregarReserva(Reserva reserva, Cliente cliente, Habitacion habitacion)
-    {
-        reserva.asignarIdAutoincremental();
-        //reserva.setCliente(cliente);
-        //reserva.setHabitacion(habitacion);
-        gestionReservas.agregar(reserva);
-        gestionReservas.guardarReservasJson();
-        return "reservas";
-    }
-
-    @PostMapping("/agregarReserva")
     public String agregarReserva(Reserva reserva)
     {
         reserva.asignarIdAutoincremental();
-        //reserva.setCliente(cliente);
-        //reserva.setHabitacion(habitacion);
         gestionReservas.agregar(reserva);
         gestionReservas.guardarReservasJson();
-        return "reservas";
+        return "redirect:/reservas";
     }
 
     @GetMapping("/habitaciones")
@@ -130,6 +117,6 @@ public class ControladorGeneral
         habitacion.asignarIdAutoincremental();
         gestionHabitaciones.agregar(habitacion);
         gestionHabitaciones.guardarHabitacionJson();
-        return "habitaciones";
+        return "redirect:/habitaciones";
     }
 }

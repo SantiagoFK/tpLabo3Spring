@@ -22,28 +22,6 @@
                         <div class="modal-body">
                             <form th:action="@{/agregarReserva}" method="post" th:object="${reserva}">
 
-                                <!--hacer que elija el cliente de una lista desplegable-->
-                                <div class="form-group">
-                                    <label for="cliente">Cliente:</label>
-                                    <select id = "cliente" class="form-select" aria-label="Clientes">
-                                        <option selected>Clientes</option>
-                                        <option th:each="cliente: ${clientes}" value="${cliente}">
-                                            [[${cliente.getApellido()}]], [[${cliente.getNombre()}]]
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <!-- hacer que elija la habitacion de una lista desplegable-->
-                                <div class="form-group">
-                                    <label for="habitacion">Habitación:</label>
-                                    <select id = "habitacion" class="form-select" aria-label="Habitaciones">
-                                        <option selected>Habitaciones</option>
-                                        <option th:each="habitacion: ${habitaciones}" value="${habitacion}">
-                                            [[${habitacion.getId()}]], [[${habitacion.getTipoHabitacion()}]], [[${habitacion.getPrecioDiario()}]]
-                                        </option>
-                                    </select>
-                                </div>
-
                                 <div class="form-group">
                                     <label for="diaCheckIn">Check In:</label>
                                     <input type="date" id = "diaCheckIn" name ="diaCheckIn" class = "form-control" required>
@@ -63,7 +41,6 @@
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>
-
                             </form>
                         </div>
 
@@ -77,8 +54,6 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Cliente</th>
-                    <th scope="col">Habitación</th>
                     <th scope="col">Check In</th>
                     <th scope="col">Check Out</th>
                     <th scope="col">Monto</th>
@@ -88,8 +63,6 @@
                 <tbody>
                 <tr th:each="reserva: ${reservas}">
                     <th scope="row">[[${reserva.getId()}]]</th>
-                    <td>[[${reserva.getCliente.getApellido()}]], [[${reserva.getCliente.getNombre()}]]</td>
-                    <td>[[${reserva.getHabitacion().getId()}]], [[${reserva.getHabitacion().getTipoHabitacion}]]</td>
                     <td>[[${reserva.getDiaCheckIn()}]]</td>
                     <td>[[${reserva.getDiaCheckOut()}]]</td>
                     <td>[[${reserva.getMontoPagar()}]]</td>
