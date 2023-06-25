@@ -8,7 +8,7 @@
     <body>
         <header th:replace="plantillaBase :: header"></header>
 
-        <div class = "container my-3">
+        <div class = "container mt-2">
             <div class="row">
                 <!--
                 <div class="mx-auto w-75">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="lead my-4">
+                <div class="lead mt-4">
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec rhoncus arcu, bibendum malesuada augue. Nam vehicula sapien sit amet dapibus fringilla. Fusce pellentesque vestibulum lacus ut sodales. Vestibulum iaculis urna at mauris semper fringilla. Sed eu elit dictum libero tristique condimentum a eget enim. Nam eget auctor urna. Sed ut lobortis massa. Nunc volutpat bibendum condimentum.
 
@@ -66,6 +66,110 @@
 
             </div>
         </div>
+
+        <section id = "servicios" class = "my-4">
+            <h1 class="display-3 text-center mb-2">Servicios</h1>
+
+            <div class = "container my-3">
+                <div class = "row">
+                    <div class="col-3">
+                        <div class="card" style="width: 15rem;">
+                            <img th:src="@{/images/gim1.jpg}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Gimnasio</h5>
+                                <p class="card-text">Con variedad de máquinas para mantenerte en forma!</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-3">
+                        <div class="card" style="width: 15rem;">
+                            <img th:src="@{/images/jacuzzi6.jpg}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Jacuzzi</h5>
+                                <p class="card-text">Relajate en nuestras suites con jacuzzi incluido!</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-3">
+                        <div class="card" style="width: 15rem;">
+                            <img th:src="@{/images/pool.jpg}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Piscina</h5>
+                                <p class="card-text">Nada al aire libre con nuestra piscina en el techo!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 15rem;">
+                            <img th:src="@{/images/bar.jpg}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Bar</h5>
+                                <p class="card-text">Disfruta de un buen trago en nuestro bar!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id = "habitaciones" class = "my-4">
+            <h1 class="display-3 text-center mb-2">Habitaciones</h1>
+
+            <div class = "container my-3">
+                <div class = "row">
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
 
         <footer th:replace="plantillaBase :: footer"></footer>
 
