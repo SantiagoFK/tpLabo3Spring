@@ -1,10 +1,12 @@
 package sistemaHotelUtn.gestionHabitaciones;
 
+import lombok.Data;
 import sistemaHotelUtn.gestionReservas.Reserva;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
+@Data
 public class Habitacion implements Serializable {
 
     //region Atributos

@@ -2,6 +2,7 @@ package sistemaHotelUtn.gestionEventos;
 
 import sistemaHotelUtn.generales.Gestion;
 import sistemaHotelUtn.generales.Json.JsonRepo;
+import sistemaHotelUtn.gestionClientes.Cliente;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -104,6 +105,23 @@ public class GestionEventos extends Gestion<Evento> {
         JsonRepo<Evento> eventosJson = new JsonRepo<>("eventos", eventosList, Evento.class);
         eventosList = eventosJson.cargar();
         this.setLista(eventosList);
+    }
+
+    public boolean eliminarEventoPorId(int id)
+    {
+        boolean eliminado = false;
+
+        for(Evento evento: this.getLista())
+        {
+            if( evento.getId() == id )
+            {
+                this.getLista().remove(evento);
+                eliminado = true;
+                return eliminado;
+            }
+        }
+
+        return eliminado;
     }
 
 }

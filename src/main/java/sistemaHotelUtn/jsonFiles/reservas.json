@@ -1,9 +1,0 @@
-[ {
-  "id" : 1,
-  "diaCheckIn" : [ 2023, 6, 2 ],
-  "diaCheckOut" : [ 2023, 6, 23 ],
-  "cliente" : null,
-  "habitacion" : null,
-  "montoPagar" : 22000.0,
-  "estaActiva" : false
-} ]

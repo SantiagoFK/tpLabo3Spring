@@ -4,6 +4,7 @@ import sistemaHotelUtn.generales.Gestion;
 import sistemaHotelUtn.generales.Json.JsonRepo;
 import sistemaHotelUtn.gestionClientes.Cliente;
 import sistemaHotelUtn.gestionClientes.GestionClientes;
+import sistemaHotelUtn.gestionEventos.Evento;
 import sistemaHotelUtn.gestionHabitaciones.GestionHabitaciones;
 import sistemaHotelUtn.gestionHabitaciones.Habitacion;
 
@@ -209,6 +210,22 @@ public class GestionReservas extends Gestion<Reserva> {
         return ChronoUnit.DAYS.between(diaCheckIn, diaCheckOut);
     }
 
+    public boolean eliminarReservaPorId(int id)
+    {
+        boolean eliminado = false;
+
+        for(Reserva reserva: this.getLista())
+        {
+            if( reserva.getId() == id )
+            {
+                this.getLista().remove(reserva);
+                eliminado = true;
+                return eliminado;
+            }
+        }
+
+        return eliminado;
+    }
 
 }
 

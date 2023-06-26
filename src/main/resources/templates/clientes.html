@@ -9,9 +9,7 @@
         <h1 class="display-3 text-center">Clientes</h1>
 
         <div class="my-3 mx-3">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#agregarCliente">Agregar</button>
-
+            <!-- formulario agregar cliente -->
             <div class="modal fade" id="agregarCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -54,6 +52,32 @@
             </div>
         </div>
 
+        <!-- formulario eliminar cliente -->
+        <div class="modal fade" id="eliminarCliente" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalLabel">Formulario</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/eliminarCliente}" method="post" th:object="${idCliente}">
+                            <div class="form-group">
+                                <label for="idCliente">Id cliente:</label>
+                                <input type="number" id = "idCliente" name ="idCliente" class = "form-control" required
+                                       min="1">
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div th:if="${ clientes != null and ! clientes.empty }">
             <table class="table table-dark">
                 <thead>
@@ -82,6 +106,15 @@
              class="text-center p-2">
             <span>Lista de clientes vacía</span>
         </div>
+
+        <div class = "text-center">
+            <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal"
+                    data-bs-target="#agregarCliente"><i class="bi bi-plus-circle"></i> Agregar </button>
+
+            <span> <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal"
+                    data-bs-target="#eliminarCliente"> <i class="bi bi-x-circle"></i> Eliminar</button> </span>
+        </div>
+
 
         <footer th:replace="plantillaBase :: footer"></footer>
     </body>

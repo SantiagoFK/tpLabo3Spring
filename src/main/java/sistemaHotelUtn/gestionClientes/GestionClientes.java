@@ -96,11 +96,6 @@ public class GestionClientes extends Gestion<Cliente> {
     }
 
 
-
-
-
-
-
     public void anularReserva(GestionReservas gestionReservas, Cliente cliente){
         System.out.println("Ingrese su dni");
         String dni = new Scanner(System.in).next();
@@ -117,5 +112,22 @@ public class GestionClientes extends Gestion<Cliente> {
             System.out.println("Su reserva fue anulada con exito");
             System.out.println("reserva = " + reserva);
         }
+    }
+
+    public boolean eliminarClientePorId(int id)
+    {
+        boolean eliminado = false;
+
+        for(Cliente cliente: this.getLista())
+        {
+            if( cliente.getId() == id )
+            {
+                this.getLista().remove(cliente);
+                eliminado = true;
+                return eliminado;
+            }
+        }
+
+        return eliminado;
     }
 }

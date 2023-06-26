@@ -9,9 +9,7 @@
         <h1 class="display-3 text-center">Reservas</h1>
 
         <div class="my-3 mx-3">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#agregarReserva">Agregar</button>
-
+            <!-- formulario agregar reserva -->
             <div class="modal fade" id="agregarReserva" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -49,6 +47,32 @@
             </div>
         </div>
 
+        <!-- formulario eliminar reserva -->
+        <div class="modal fade" id="eliminarReserva" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalLabel">Eliminar</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/eliminarReserva}" method="post" th:object="${idReserva}">
+                            <div class="form-group">
+                                <label for="idReserva">Id reserva:</label>
+                                <input type="number" id = "idReserva" name ="idReserva" class = "form-control" required
+                                       min="1">
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div th:if="${ reservas != null and ! reservas.empty }">
             <table class="table table-dark">
                 <thead>
@@ -74,6 +98,14 @@
         <div th:if = "${reservas == null or reservas.empty}"
              class="text-center p-2">
             <span>Lista de reservas vacía</span>
+        </div>
+
+        <div class = "text-center">
+            <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal"
+                    data-bs-target="#agregarReserva"><i class="bi bi-plus-circle"></i> Agregar </button>
+
+            <span> <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal"
+                           data-bs-target="#eliminarReserva"> <i class="bi bi-x-circle"></i> Eliminar</button> </span>
         </div>
 
         <footer th:replace="plantillaBase :: footer"></footer>

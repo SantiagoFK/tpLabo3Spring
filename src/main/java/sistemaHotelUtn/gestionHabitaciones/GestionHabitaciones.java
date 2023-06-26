@@ -2,6 +2,7 @@ package sistemaHotelUtn.gestionHabitaciones;
 
 import sistemaHotelUtn.generales.Gestion;
 import sistemaHotelUtn.generales.Json.JsonRepo;
+import sistemaHotelUtn.gestionReservas.Reserva;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -85,5 +86,20 @@ public class GestionHabitaciones extends Gestion<Habitacion> {
         habitacionJson.guardar();
     }
 
+    public boolean eliminarHabitacionPorId(int id)
+    {
+        boolean eliminado = false;
 
+        for(Habitacion habitacion: this.getLista())
+        {
+            if( habitacion.getId() == id )
+            {
+                this.getLista().remove(habitacion);
+                eliminado = true;
+                return eliminado;
+            }
+        }
+
+        return eliminado;
+    }
 }

@@ -12,6 +12,8 @@ import sistemaHotelUtn.gestionEventos.Evento;
 import sistemaHotelUtn.gestionEventos.GestionEventos;
 import sistemaHotelUtn.gestionHabitaciones.GestionHabitaciones;
 import sistemaHotelUtn.gestionHabitaciones.Habitacion;
+import sistemaHotelUtn.gestionHabitaciones.ServiciosHabitacion;
+import sistemaHotelUtn.gestionHabitaciones.TipoHabitacion;
 import sistemaHotelUtn.gestionReservas.GestionReservas;
 import sistemaHotelUtn.gestionReservas.Reserva;
 
@@ -48,6 +50,27 @@ public class ControladorGeneral
         return "redirect:/eventos";
     }
 
+    @PostMapping("/eliminarEvento")
+    public String eliminarEvento(Integer idEvento)
+    {
+        gestionEventos.cargarEventosJson();
+        boolean eliminado = false;
+
+        try
+        {
+            eliminado = gestionEventos.eliminarEventoPorId(idEvento);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        if( eliminado = true )
+            gestionEventos.guardarEventosJson();
+
+        return "redirect:/eventos";
+    }
+
     @GetMapping("/clientes")
     public String clientes(Model model)
     {
@@ -65,6 +88,27 @@ public class ControladorGeneral
         return "redirect:/clientes";
     }
 
+    @PostMapping("/eliminarCliente")
+    public String eliminarCliente(Integer idCliente)
+    {
+        gestionClientes.cargarClientesJson();
+        boolean eliminado = false;
+
+        try
+        {
+            eliminado = gestionClientes.eliminarClientePorId(idCliente);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        if( eliminado = true )
+            gestionClientes.guardarClientesJson();
+
+        return "redirect:/clientes";
+    }
+
     @GetMapping("/empleados")
     public String empleados(Model model)
     {
@@ -79,6 +123,27 @@ public class ControladorGeneral
         empleado.asignarIdAutoincremental();
         gestionEmpleados.agregar(empleado);
         gestionEmpleados.guardarEmpleadosJson();
+        return "redirect:/empleados";
+    }
+
+    @PostMapping("/eliminarEmpleado")
+    public String eliminarEmpleado(Integer idEmpleado)
+    {
+        gestionEmpleados.cargarEmpleadosJson();
+        boolean eliminado = false;
+
+        try
+        {
+            eliminado = gestionEmpleados.eliminarEmpleadoPorId(idEmpleado);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        if( eliminado = true )
+            gestionEmpleados.guardarEmpleadosJson();
+
         return "redirect:/empleados";
     }
 
@@ -103,11 +168,34 @@ public class ControladorGeneral
         return "redirect:/reservas";
     }
 
+    @PostMapping("/eliminarReserva")
+    public String eliminarReserva(Integer idReserva)
+    {
+        gestionReservas.cargarReservasJson();
+        boolean eliminado = false;
+
+        try
+        {
+            eliminado = gestionReservas.eliminarReservaPorId(idReserva);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        if( eliminado = true )
+            gestionReservas.guardarReservasJson();
+
+        return "redirect:/reservas";
+    }
+
     @GetMapping("/habitaciones")
     public String habitaciones(Model model)
     {
         gestionHabitaciones.cargarHabitacionesJson();
         model.addAttribute("habitaciones", gestionHabitaciones.getLista());
+        model.addAttribute("tipos", TipoHabitacion.values());
+        model.addAttribute("servicios", ServiciosHabitacion.values());
         return "habitaciones";
     }
 
@@ -119,4 +207,26 @@ public class ControladorGeneral
         gestionHabitaciones.guardarHabitacionJson();
         return "redirect:/habitaciones";
     }
+
+    @PostMapping("/eliminarHabitacion")
+    public String eliminarHabitacion(Integer idHabitacion)
+    {
+        gestionHabitaciones.cargarHabitacionesJson();
+        boolean eliminado = false;
+
+        try
+        {
+            eliminado = gestionHabitaciones.eliminarHabitacionPorId(idHabitacion);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        if( eliminado = true )
+            gestionHabitaciones.guardarHabitacionJson();
+
+        return "redirect:/habitaciones";
+    }
+
 }

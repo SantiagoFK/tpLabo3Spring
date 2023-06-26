@@ -99,4 +99,21 @@ public class GestionEmpleados extends Gestion<Empleado> {
         }
     }
 
+    public boolean eliminarEmpleadoPorId(int id)
+    {
+        boolean eliminado = false;
+
+        for(Empleado empleado: this.getLista())
+        {
+            if( empleado.getId() == id )
+            {
+                this.getLista().remove(empleado);
+                eliminado = true;
+                return eliminado;
+            }
+        }
+
+        return eliminado;
+    }
+
 }

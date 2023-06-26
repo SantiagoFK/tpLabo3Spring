@@ -1,5 +1,7 @@
 package sistemaHotelUtn.generales;
 
+import sistemaHotelUtn.gestionClientes.Cliente;
+
 import java.util.ArrayList;
 
 abstract public class Gestion<T> {
