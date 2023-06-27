@@ -203,6 +203,7 @@ public class ControladorGeneral
     public String agregarHabitacion(Habitacion habitacion)
     {
         habitacion.asignarIdAutoincremental();
+        habitacion.asignarServiciosStandard();
         gestionHabitaciones.agregar(habitacion);
         gestionHabitaciones.guardarHabitacionJson();
         return "redirect:/habitaciones";

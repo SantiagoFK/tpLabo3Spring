@@ -25,23 +25,21 @@
                                 </div>
 
                                 <!--modificar para que sea una lista select--->
+                                <!--
                                 <div class="form-group">
                                     <label for="tipoHabitacion">Tipo Habitación:</label>
-                                    <!--
-                                    <input type="text" id = "tipoHabitacion" name ="tipoHabitacion" class = "form-control" required>-->
-                                    <select class="form-select" aria-label="Default select example" id = "tipoHabitacion">
+                                    <input type="text" id = "tipoHabitacion" name ="tipoHabitacion" class = "form-control" required>
+                                    <select class="form-select" aria-label="Default select example" id = "tipoHabitacion"
+                                            th:field="*{tipoHabitacion}">
                                         <option th:each = "tipo: ${tipos}" value="${tipo}">[[${tipo}]]</option>
                                     </select>
                                 </div>
+                                -->
 
-                                <!--modificar para que sea una lista select--->
                                 <div class="form-group">
                                     <label for="servicios">Servicios:</label>
-                                    <!--
-                                    <input type="text" id = "servicios" name ="servicios" class = "form-control" required>-->
-                                    <select class="form-select" aria-label="Default select example" id = "servicios">
-                                        <option th:each = "servicio: ${servicios}" value="${servicio}">[[${servicio}]]</option>
-                                    </select>
+                                    <input type="text" id = "servicios" name ="servicios" class = "form-control" disabled
+                                        placeholder="Standard">
                                 </div>
 
                                 <div class="modal-footer">

@@ -17,7 +17,7 @@ public class Habitacion implements Serializable {
     private Double precioDiario;
     private int capacidadMax;
     private TipoHabitacion tipoHabitacion = TipoHabitacion.MonoAmbiente;
-    private ArrayList<ServiciosHabitacion> serviciosHabitacion;
+    private ArrayList<ServiciosHabitacion> serviciosHabitacion = new ArrayList<>();
 
     //endregion
 
@@ -98,6 +98,14 @@ public class Habitacion implements Serializable {
 
     public TipoHabitacion getTipoHabitacion() {
         return tipoHabitacion;
+    }
+
+    public void asignarServiciosStandard()
+    {
+        this.serviciosHabitacion.add(ServiciosHabitacion.WIFI);
+        this.serviciosHabitacion.add(ServiciosHabitacion.JACUZZI);
+        this.serviciosHabitacion.add(ServiciosHabitacion.BANIERA);
+        this.serviciosHabitacion.add(ServiciosHabitacion.CABLE);
     }
 
     public void setTipoHabitacion(TipoHabitacion tipoHabitacion) {

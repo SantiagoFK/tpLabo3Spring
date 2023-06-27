@@ -1,1 +1,17 @@
-[ ]
+[ {
+  "id" : 1,
+  "idEstaAsignado" : true,
+  "esReservable" : false,
+  "precioDiario" : 50000.0,
+  "capacidadMax" : 0,
+  "tipoHabitacion" : "MonoAmbiente",
+  "serviciosHabitacion" : null
+}, {
+  "id" : 2,
+  "idEstaAsignado" : true,
+  "esReservable" : false,
+  "precioDiario" : 50000.0,
+  "capacidadMax" : 0,
+  "tipoHabitacion" : "MonoAmbiente",
+  "serviciosHabitacion" : [ "WIFI", "JACUZZI", "BANIERA", "CABLE" ]
+} ]
