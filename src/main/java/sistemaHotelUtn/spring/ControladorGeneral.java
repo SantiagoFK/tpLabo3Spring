@@ -44,7 +44,7 @@ public class ControladorGeneral
     @PostMapping("/agregarEvento")
     public String agregarEvento(Evento evento)
     {
-        evento.asignarIdAutoincremental();
+        evento.setId(gestionEventos.getUltimoIdDisponible());
         gestionEventos.agregar(evento);
         gestionEventos.guardarEventosJson();
         return "redirect:/eventos";
@@ -82,7 +82,7 @@ public class ControladorGeneral
     @PostMapping("/agregarCliente")
     public String agregarCliente(Cliente cliente)
     {
-        cliente.asignarIdAutoincremental();
+        cliente.setId(gestionClientes.getUltimoIdDisponible());
         gestionClientes.agregar(cliente);
         gestionClientes.guardarClientesJson();
         return "redirect:/clientes";
@@ -120,7 +120,7 @@ public class ControladorGeneral
     @PostMapping("/agregarEmpleado")
     public String agregarEmpleado(Empleado empleado)
     {
-        empleado.asignarIdAutoincremental();
+        empleado.setId(gestionEmpleados.getUltimoIdDisponible());
         gestionEmpleados.agregar(empleado);
         gestionEmpleados.guardarEmpleadosJson();
         return "redirect:/empleados";
@@ -162,7 +162,7 @@ public class ControladorGeneral
     @PostMapping("/agregarReserva")
     public String agregarReserva(Reserva reserva)
     {
-        reserva.asignarIdAutoincremental();
+        reserva.setId(gestionReservas.getUltimoIdDisponible());
         gestionReservas.agregar(reserva);
         gestionReservas.guardarReservasJson();
         return "redirect:/reservas";
@@ -202,7 +202,7 @@ public class ControladorGeneral
     @PostMapping("/agregarHabitacion")
     public String agregarHabitacion(Habitacion habitacion)
     {
-        habitacion.asignarIdAutoincremental();
+        habitacion.setId(gestionHabitaciones.getUltimoIdDisponible());
         habitacion.asignarServiciosStandard();
         gestionHabitaciones.agregar(habitacion);
         gestionHabitaciones.guardarHabitacionJson();

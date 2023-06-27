@@ -5,4 +5,11 @@
   "participantes" : 50,
   "fechaHoraInicio" : [ 2023, 6, 26, 16, 22, 36, 971411000 ],
   "fechaHoraFin" : [ 2023, 6, 26, 18, 22, 36, 971411000 ]
+}, {
+  "id" : 2,
+  "nombreEvento" : "InnovaSpace",
+  "organizador" : "UNMDP",
+  "participantes" : 120,
+  "fechaHoraInicio" : [ 2023, 6, 27, 13, 51, 48, 367232800 ],
+  "fechaHoraFin" : [ 2023, 6, 27, 15, 51, 48, 367232800 ]
 } ]

@@ -48,4 +48,8 @@ abstract public class Gestion<T> {
         return lista;
     }
 
+    public int getUltimoIdDisponible() {
+        return this.lista.size() + 1;
+    }
+
 }
